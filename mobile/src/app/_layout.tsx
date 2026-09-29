@@ -1,0 +1,20 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+
+const queryClient = new QueryClient({ defaultOptions: { queries: { retry: 1, staleTime: 30_000 } } });
+
+export default function RootLayout() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <StatusBar style="dark" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="add-task" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="places" />
+        <Stack.Screen name="shared" />
+        <Stack.Screen name="settings" />
+      </Stack>
+    </QueryClientProvider>
+  );
+}

@@ -1,0 +1,28 @@
+# JavaScript / Expo generated files
+**/node_modules/
+**/.expo/
+**/dist/
+**/web-build/
+**/tmp-web-build/
+**/.metro-health-check*
+
+# Spring / Gradle generated files
+**/.gradle/
+**/build/
+
+# Local environment values and secrets
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Generated native folders (Expo Continuous Native Generation)
+mobile/android/
+mobile/ios/
+
+# IDE and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.iml
+*.tsbuildinfo

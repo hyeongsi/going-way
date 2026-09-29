@@ -1,0 +1,22 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: going-way-server
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+# React Native 네이티브 앱은 CORS 제약을 받지 않지만, Expo 웹 개발 환경은 필요합니다.
+# 배포 환경에서는 실제 웹 도메인만 환경 변수로 명시하세요.
+app:
+  cors:
+    allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:8081,http://localhost:19006}
