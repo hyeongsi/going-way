@@ -1,17 +1,12 @@
 import { Tabs } from 'expo-router';
-import { AppColors } from '@/constants/design-system';
+import { GoingWayTabBar } from '@/components/navigation/going-way-tab-bar';
 
 export default function TabsLayout() {
   return (
     <Tabs
+      tabBar={(props) => <GoingWayTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: AppColors.primary,
-        tabBarInactiveTintColor: AppColors.muted,
-        tabBarStyle: {
-          backgroundColor: AppColors.surface,
-          borderTopColor: AppColors.border,
-        },
       }}
     >
       <Tabs.Screen
