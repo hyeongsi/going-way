@@ -17,8 +17,16 @@ export default function RootLayout() {
           options={{ presentation: 'modal' }}
         />
         <Stack.Screen name="places" />
+        <Stack.Screen
+          name="add-place"
+          options={{ presentation: 'modal' }}
+        />
         <Stack.Screen name="shared" />
         <Stack.Screen name="settings" />
+        <Stack.Screen
+          name="nearby-alert"
+          options={{ presentation: 'fullScreenModal' }}
+        />
       </Stack>
     </QueryClientProvider>
   );
