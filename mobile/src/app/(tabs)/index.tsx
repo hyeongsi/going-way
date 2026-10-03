@@ -1,41 +1,66 @@
 import { router } from 'expo-router';
-import { View } from 'react-native';
-import { AppButton } from '@/components/ui/app-button';
-import { FeaturePlaceholder } from '@/components/ui/feature-placeholder';
-import { Screen } from '@/components/ui/screen';
-import { Spacing } from '@/constants/design-system';
+import { ScrollView, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import HomeHeader from '@/components/home/home-header';
+import { HomeMapPreview } from '@/components/home/home-map-preview';
+import { HomeTaskCard } from '@/components/home/home-task-card';
+import { AppColors, Spacing } from '@/constants/design-system';
 
 export default function HomeScreen() {
   return (
-    <Screen
-      title="가는김에"
-      subtitle="가는 길에 처리할 일을 모아보세요."
+    <SafeAreaView
+      style={styles.safeArea}
+      edges={['top']}
     >
-      <FeaturePlaceholder
-        title="홈 화면"
-        description="지도 요약, 다음 동선 추천, 지금 주변, 오늘의 할 일을 이 화면에서 학습하며 구현하세요."
-      />
-      <View style={{ gap: Spacing.sm }}>
-        <AppButton
-          label="새 할 일"
+      <ScrollView
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        <HomeHeader onProfilePress={() => router.push('/settings')} />
+
+        <HomeMapPreview />
+
+        <HomeTaskCard
+          sectionTitle="다음 출근길 추천"
+          actionText="지금 가면 딱 좋아요"
+          icon="laundry"
+          title="세탁소에서 옷 찾기"
+          detail="경로 내 · 3분 들름"
+          highlighted
+          onPress={() => router.push('/nearby-alert')}
+        />
+
+        <HomeTaskCard
+          sectionTitle="주변에 이런 할 일이 있어요"
+          actionText="지금 들러보세요"
+          icon="medicine"
+          title="감기약 구매"
+          detail="350m · 영업 중"
           onPress={() => router.push('/add-task')}
         />
-        <AppButton
-          label="내 장소"
-          variant="secondary"
-          onPress={() => router.push('/places')}
+
+        <HomeTaskCard
+          sectionTitle="오늘의 할 일"
+          actionText="잊지 말고 챙겨요"
+          icon="cart"
+          title="우유 사기"
+          detail="집 근처 마트"
+          onPress={() => router.push('/tasks')}
         />
-        <AppButton
-          label="공동 목록"
-          variant="secondary"
-          onPress={() => router.push('/shared')}
-        />
-      </View>
-      <FeaturePlaceholder
-        note
-        title="구현 순서 제안"
-        description="더미 할 일 카드 → 장소 선택 → 알림 설정 → 위치·알림 연동 순서로 진행하세요."
-      />
-    </Screen>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  safeArea: {
+    backgroundColor: AppColors.background,
+    flex: 1,
+  },
+  content: {
+    gap: 14,
+    paddingBottom: 20,
+    paddingHorizontal: Spacing.md,
+    paddingTop: Spacing.sm,
+  },
+});
