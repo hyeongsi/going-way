@@ -6,6 +6,10 @@ export const storage = {
     const value = await AsyncStorage.getItem(key);
     return value ? (JSON.parse(value) as T) : null;
   },
-  setJson<T>(key: string, value: T): Promise<void> { return AsyncStorage.setItem(key, JSON.stringify(value)); },
-  remove(key: string): Promise<void> { return AsyncStorage.removeItem(key); },
+  setJson<T>(key: string, value: T): Promise<void> {
+    return AsyncStorage.setItem(key, JSON.stringify(value));
+  },
+  remove(key: string): Promise<void> {
+    return AsyncStorage.removeItem(key);
+  },
 };

@@ -11,7 +11,11 @@
       "icon": "./assets/expo.icon"
     },
     "android": {
-      "permissions": ["ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION", "POST_NOTIFICATIONS"],
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "POST_NOTIFICATIONS"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
@@ -26,7 +30,12 @@
     },
     "plugins": [
       "expo-router",
-      ["expo-location", { "locationWhenInUsePermission": "주변 할 일과 이동 동선을 추천하기 위해 현재 위치를 사용합니다." }],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "주변 할 일과 이동 동선을 추천하기 위해 현재 위치를 사용합니다."
+        }
+      ],
       "expo-notifications",
       [
         "expo-splash-screen",

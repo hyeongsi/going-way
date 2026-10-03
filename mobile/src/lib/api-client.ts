@@ -35,14 +35,19 @@ async function readResponseBody(response: Response): Promise<unknown> {
   }
 
   const contentType = response.headers.get('content-type') ?? '';
-  return contentType.includes('application/json') ? response.json() : response.text();
+  return contentType.includes('application/json')
+    ? response.json()
+    : response.text();
 }
 
 /**
  * 모든 Spring API 호출이 사용할 공통 요청 함수입니다.
  * 도메인별 endpoint나 인증 헤더는 기능을 구현할 때 이 위에 얹습니다.
  */
-export async function apiRequest<T>(path: string, options: ApiRequestOptions = {}): Promise<T> {
+export async function apiRequest<T>(
+  path: string,
+  options: ApiRequestOptions = {},
+): Promise<T> {
   const { headers, json, body, ...requestOptions } = options;
   const requestHeaders = new Headers(headers);
   requestHeaders.set('Accept', 'application/json');
@@ -64,7 +69,11 @@ export async function apiRequest<T>(path: string, options: ApiRequestOptions = {
 
   const responseBody = await readResponseBody(response);
   if (!response.ok) {
-    throw new ApiError(`API 요청에 실패했습니다. (${response.status})`, response.status, responseBody);
+    throw new ApiError(
+      `API 요청에 실패했습니다. (${response.status})`,
+      response.status,
+      responseBody,
+    );
   }
 
   return responseBody as T;
