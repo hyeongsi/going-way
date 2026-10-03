@@ -50,9 +50,11 @@ Copy-Item .env.example .env.local
 |---|---|
 | `src/app/(tabs)/index.tsx` | 홈 |
 | `src/app/(tabs)/tasks.tsx` | 할 일 |
-| `src/app/add-task.tsx` | 3단계 새 할 일 흐름 시작점 |
+| `src/app/add-task.tsx` | 3단계 새 할 일 흐름 |
 | `src/app/places.tsx` | 내 장소 |
+| `src/app/add-place.tsx` | 새 장소 등록 |
 | `src/app/shared.tsx` | 공동 목록 |
-| `src/app/settings.tsx` | 설정 |
+| `src/app/settings.tsx` | 계정·내 장소 설정 |
+| `src/app/nearby-alert.tsx` | 근처 알림 팝업 |
 
 확정한 UI 시안은 상위 폴더의 [`docs/ui-reference/README.md`](../docs/ui-reference/README.md)에 있습니다.
